@@ -11,6 +11,7 @@ const db = mysql.createConnection({
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_DATABASE,
+  port: process.env.DB_PORT
 });
 
 const cek = process.env.DB_DATABASE
@@ -23,7 +24,7 @@ app.get('/', (req, res) => {
   res.status(200).send("its working")
 })
 
-app.listen(8000,async () => {
+app.listen(8000, async () => {
   await db.connect((err) => {
     if (err) {
       console.error('Error connecting to the database: ' + err.stack);
